@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from "react";
+
+// function App() {
+//   const [user, setUser] = React.useState([]);
+
+//   const fetchData = () => {
+//     fetch('https://randomuser.me/api/?results=1')
+//       .then(resoponse => resoponse.json())
+//       .then(data => setUser(data));
+//   };
+
+//   React.useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   // console.log(user.res);
+
+//   return Object.keys(user).length > 0 ? (
+//     <div style={{padding: "40px"}}>
+//       <h1>Customer data</h1>
+//       <h2>Name: {user.results[0].name.first}</h2>
+//       <img src={user.results[0].picture.large} alt="" />
+//     </div>
+//   ) : (
+//     <h1>Data pending...</h1>
+//   );
+// }
+
+// export default App;
+import { useState } from "react";
+import useConsoleLog from "./useConsoleLog";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-        <h1>
-          Hello React!
-          </h1>
-        <p>
-          My name is Tima!
-          </p>
-          
-        
-      </header>
-    </div>
-  );
+  const [count, setCount] = useState(0);
+  useConsoleLog(count);
+
+  function increment() {
+    setCount(prevCount => prevCount + 1);
+  }
+
+ return (
+   <div>
+       <h1>Count: {count}</h1>
+      <button onClick={increment}>Plus 1</button>
+   </div>
+  );
 }
 
 export default App;
